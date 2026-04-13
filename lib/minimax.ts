@@ -29,7 +29,7 @@ async function chatCompletion(messages: ChatMessage[]): Promise<string> {
     body: JSON.stringify({
       model: "llama-3.3-70b-versatile",
       messages,
-      max_tokens: 1024,
+      max_tokens: 2048,
       temperature: 0.7,
     }),
   });
@@ -51,14 +51,29 @@ async function chatCompletion(messages: ChatMessage[]): Promise<string> {
 }
 
 function extractJSON<T>(raw: string): T {
-  // Try to extract JSON from markdown code blocks first, then raw string
-  const codeBlockMatch = raw.match(/```(?:json)?\s*([\s\S]*?)```/);
-  let jsonString = codeBlockMatch ? codeBlockMatch[1].trim() : raw.trim();
+  let jsonString = raw.trim();
 
-  // Remove control characters that break JSON.parse
-  jsonString = jsonString.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F]/g, "");
+  // Extract from code block if present
+  const codeBlockMatch = jsonString.match(/```(?:json)?\s*([\s\S]*?)```/);
+  if (codeBlockMatch) jsonString = codeBlockMatch[1].trim();
 
-  return JSON.parse(jsonString) as T;
+  // Find JSON boundaries (first { to last })
+  const firstBrace = jsonString.indexOf("{");
+  const lastBrace  = jsonString.lastIndexOf("}");
+  if (firstBrace !== -1 && lastBrace !== -1) {
+    jsonString = jsonString.slice(firstBrace, lastBrace + 1);
+  }
+
+  // Remove all control characters except newlines/tabs
+  jsonString = jsonString.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F\x7F]/g, "");
+
+  try {
+    return JSON.parse(jsonString) as T;
+  } catch {
+    // Last resort: try stripping any non-printable unicode
+    // Remove characters that are not valid JSON tokens
+    throw new Error(`Failed to parse JSON. Preview (first 200 chars): ${jsonString.slice(0, 200)}`);
+  }
 }
 
 export async function generateCarousel(req: GenerateRequest): Promise<GenerateResponse> {
