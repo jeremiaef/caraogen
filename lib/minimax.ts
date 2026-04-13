@@ -1,9 +1,9 @@
 import { GenerateRequest, GenerateResponse, RemixSlideRequest, Slide } from "./types";
 
-const GROQ_BASE_URL = "https://api.groq.com/openai/v1";
+const MINIMAX_BASE_URL = "https://api.minimax.chat/v1";
 
 function getApiKey(): string {
-  const key = process.env.MINIMAX_API_KEY; // still named MINIMAX_API_KEY in Vercel
+  const key = process.env.MINIMAX_API_KEY;
   if (!key) throw new Error("MINIMAX_API_KEY environment variable is not set");
   return key;
 }
@@ -20,14 +20,14 @@ interface ChatResponse {
 
 async function chatCompletion(messages: ChatMessage[]): Promise<string> {
   const apiKey = getApiKey();
-  const response = await fetch(`${GROQ_BASE_URL}/chat/completions`, {
+  const response = await fetch(`${MINIMAX_BASE_URL}/chat/completions`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
-      model: "llama-3.3-70b-versatile",
+      model: "MiniMax-Text-01",
       messages,
       max_tokens: 1024,
       temperature: 0.7,
@@ -36,17 +36,17 @@ async function chatCompletion(messages: ChatMessage[]): Promise<string> {
 
   if (!response.ok) {
     const text = await response.text();
-    throw new Error(`Groq API error ${response.status}: ${text}`);
+    throw new Error(`MiniMax API error ${response.status}: ${text}`);
   }
 
   const data: ChatResponse = await response.json();
 
   if (data.error) {
-    throw new Error(`Groq API error: ${data.error.message}`);
+    throw new Error(`MiniMax API error: ${data.error.message}`);
   }
 
   const content = data.choices[0]?.message?.content;
-  if (!content) throw new Error("Groq returned no content");
+  if (!content) throw new Error("MiniMax returned no content");
   return content;
 }
 
