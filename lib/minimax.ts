@@ -53,7 +53,11 @@ async function chatCompletion(messages: ChatMessage[]): Promise<string> {
 function extractJSON<T>(raw: string): T {
   // Try to extract JSON from markdown code blocks first, then raw string
   const codeBlockMatch = raw.match(/```(?:json)?\s*([\s\S]*?)```/);
-  const jsonString = codeBlockMatch ? codeBlockMatch[1].trim() : raw.trim();
+  let jsonString = codeBlockMatch ? codeBlockMatch[1].trim() : raw.trim();
+
+  // Remove control characters that break JSON.parse
+  jsonString = jsonString.replace(/[\x00-\x08\x0B\x0C\x0E-\x1F]/g, "");
+
   return JSON.parse(jsonString) as T;
 }
 
