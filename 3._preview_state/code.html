@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Preview Result - BIP Carousel Maker</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@700;800&amp;family=Inter:wght@400;500;600;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#ffddb8",
+                        "surface-container": "#201f21",
+                        "secondary-fixed": "#ffddb8",
+                        "inverse-on-surface": "#313032",
+                        "surface": "#131315",
+                        "error": "#ffb4ab",
+                        "surface-container-lowest": "#0e0e10",
+                        "primary-container": "#f59e0b",
+                        "on-secondary-fixed-variant": "#62400f",
+                        "inverse-primary": "#855300",
+                        "tertiary": "#8fd5ff",
+                        "outline": "#a08e7a",
+                        "on-surface": "#e5e1e4",
+                        "on-background": "#e5e1e4",
+                        "surface-bright": "#39393b",
+                        "on-primary-fixed-variant": "#653e00",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-container": "#1abdff",
+                        "secondary": "#f0bd82",
+                        "primary-fixed-dim": "#ffb95f",
+                        "on-primary-container": "#613b00",
+                        "primary": "#ffc174",
+                        "on-tertiary-fixed": "#001e2d",
+                        "on-error": "#690005",
+                        "secondary-container": "#62400f",
+                        "error-container": "#93000a",
+                        "on-tertiary": "#00344a",
+                        "secondary-fixed-dim": "#f0bd82",
+                        "surface-variant": "#353437",
+                        "surface-dim": "#131315",
+                        "on-tertiary-container": "#004966",
+                        "outline-variant": "#534434",
+                        "on-secondary-fixed": "#2a1700",
+                        "on-tertiary-fixed-variant": "#004c6a",
+                        "on-secondary": "#472a00",
+                        "on-primary": "#472a00",
+                        "surface-tint": "#ffb95f",
+                        "on-surface-variant": "#d8c3ad",
+                        "on-primary-fixed": "#2a1700",
+                        "tertiary-fixed-dim": "#7fd0ff",
+                        "surface-container-high": "#2a2a2c",
+                        "surface-container-low": "#1b1b1d",
+                        "inverse-surface": "#e5e1e4",
+                        "background": "#131315",
+                        "surface-container-highest": "#353437",
+                        "on-secondary-container": "#ddac72",
+                        "tertiary-fixed": "#c5e7ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Epilogue"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(53, 52, 55, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        .carousel-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2rem;
+        }
+        .slide-aspect {
+            aspect-ratio: 4/3;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<header class="w-full top-0 sticky z-50 bg-[#131315] dark:bg-[#131315]">
+<div class="flex justify-between items-center h-16 px-8 max-w-full mx-auto bg-[#0e0e10]">
+<div class="flex items-center gap-4">
+<span class="text-xl font-bold tracking-tighter text-[#FAFAFA] font-['Epilogue']">BIP Carousel Maker</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-[#A1A1AA] hover:text-[#FAFAFA] transition-colors font-['Epilogue'] tracking-tight" href="#">How it works</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="bg-gradient-to-r from-primary to-primary-container text-on-primary px-6 py-2 rounded-xl font-semibold text-sm active:scale-95 transition-all">Get Started</button>
+</div>
+</div>
+</header>
+<div class="flex min-h-screen">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-16 bg-[#0e0e10] dark:bg-[#0e0e10] hidden lg:block">
+<div class="flex flex-col p-4 gap-2">
+<div class="mb-6 px-2">
+<h2 class="text-lg font-black text-[#FAFAFA] font-['Inter']">Workflow</h2>
+<p class="text-xs text-[#A1A1AA] font-['Inter']">Carousel Engine</p>
+</div>
+<a class="flex items-center gap-3 px-4 py-3 text-[#A1A1AA] hover:text-[#FAFAFA] hover:bg-[#2a2a2c] rounded-lg transition-transform scale-98 font-['Inter'] text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="cloud_upload">cloud_upload</span>
+                    Upload
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#A1A1AA] hover:text-[#FAFAFA] hover:bg-[#2a2a2c] rounded-lg transition-transform scale-98 font-['Inter'] text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+                    Generating
+                </a>
+<a class="flex items-center gap-3 px-4 py-3 text-[#F59E0B] font-semibold bg-[#2a2a2c] rounded-lg transition-transform scale-98 font-['Inter'] text-sm" href="#">
+<span class="material-symbols-outlined" data-icon="visibility">visibility</span>
+                    Preview
+                </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 lg:ml-64 p-8 pb-32">
+<div class="max-w-6xl mx-auto">
+<header class="mb-12">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-container/10 border border-primary-container/20 text-primary-container text-xs font-bold uppercase tracking-widest mb-4">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                        Generation Complete
+                    </div>
+<h1 class="text-4xl md:text-5xl font-extrabold font-headline tracking-tighter text-on-surface">Your Carousel is Ready.</h1>
+<p class="text-on-surface-variant mt-2 max-w-2xl">Review your slides below. Each card is optimized for high-engagement "Build In Public" storytelling.</p>
+</header>
+<!-- Carousel Grid -->
+<div class="carousel-grid mb-16">
+<!-- Slide 1 (Hook) -->
+<div class="relative group">
+<span class="absolute top-4 left-4 z-10 text-[10px] font-bold text-primary-container uppercase tracking-widest bg-surface-container-lowest/80 backdrop-blur-md px-2 py-1 rounded-lg">Slide 1/6</span>
+<div class="slide-aspect bg-surface-container-high rounded-xl p-8 flex flex-col justify-center relative overflow-hidden border border-outline-variant/15 transition-all hover:border-primary-container/30">
+<div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-primary via-transparent to-transparent"></div>
+<h2 class="text-3xl font-headline font-extrabold leading-tight mb-4 relative z-10">I spent 100 hours building in public. Here is what I learned.</h2>
+<p class="text-on-surface-variant text-sm leading-relaxed relative z-10">Most people hide their process until it's perfect. That's the biggest mistake you can make in 2024. Here's why transparency is your superpower.</p>
+</div>
+</div>
+<!-- Slide 2 -->
+<div class="relative group">
+<span class="absolute top-4 left-4 z-10 text-[10px] font-bold text-primary-container uppercase tracking-widest bg-surface-container-lowest/80 backdrop-blur-md px-2 py-1 rounded-lg">Slide 2/6</span>
+<div class="slide-aspect bg-surface-container-high rounded-xl p-8 flex flex-col justify-center relative overflow-hidden border border-outline-variant/15 transition-all hover:border-primary-container/30">
+<h2 class="text-3xl font-headline font-extrabold leading-tight mb-4 relative z-10">The "Ugly" Middle is your best marketing asset.</h2>
+<p class="text-on-surface-variant text-sm leading-relaxed relative z-10">People don't just buy products; they buy journeys. Sharing your bugs, pivots, and failures builds a level of trust that polished ads never can.</p>
+</div>
+</div>
+<!-- Slide 3 -->
+<div class="relative group">
+<span class="absolute top-4 left-4 z-10 text-[10px] font-bold text-primary-container uppercase tracking-widest bg-surface-container-lowest/80 backdrop-blur-md px-2 py-1 rounded-lg">Slide 3/6</span>
+<div class="slide-aspect bg-surface-container-low rounded-xl p-8 flex flex-col justify-center relative overflow-hidden border border-outline-variant/15 transition-all hover:border-primary-container/30">
+<div class="absolute bottom-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl"></div>
+<h2 class="text-3xl font-headline font-extrabold leading-tight mb-4 relative z-10">Feedback loops start on day one, not day 100.</h2>
+<p class="text-on-surface-variant text-sm leading-relaxed relative z-10">By showing your work early, you allow your audience to steer the ship. This prevents you from building features that nobody actually wants.</p>
+</div>
+</div>
+<!-- Slide 4 -->
+<div class="relative group">
+<span class="absolute top-4 left-4 z-10 text-[10px] font-bold text-primary-container uppercase tracking-widest bg-surface-container-lowest/80 backdrop-blur-md px-2 py-1 rounded-lg">Slide 4/6</span>
+<div class="slide-aspect bg-surface-container-high rounded-xl p-8 flex flex-col justify-center relative overflow-hidden border border-outline-variant/15 transition-all hover:border-primary-container/30">
+<h2 class="text-3xl font-headline font-extrabold leading-tight mb-4 relative z-10">Building a community vs. building a following.</h2>
+<p class="text-on-surface-variant text-sm leading-relaxed relative z-10">Followers watch. Community participates. BIP turns passive observers into active stakeholders in your success and development cycle.</p>
+</div>
+</div>
+<!-- Slide 5 -->
+<div class="relative group">
+<span class="absolute top-4 left-4 z-10 text-[10px] font-bold text-primary-container uppercase tracking-widest bg-surface-container-lowest/80 backdrop-blur-md px-2 py-1 rounded-lg">Slide 5/6</span>
+<div class="slide-aspect bg-surface-container-low rounded-xl p-8 flex flex-col justify-center relative overflow-hidden border border-outline-variant/15 transition-all hover:border-primary-container/30">
+<h2 class="text-3xl font-headline font-extrabold leading-tight mb-4 relative z-10">The compounding effect of radical honesty.</h2>
+<p class="text-on-surface-variant text-sm leading-relaxed relative z-10">When you are honest about the struggle, you become relatable. Relatability is the foundation of long-term brand loyalty in a noisy digital world.</p>
+</div>
+</div>
+<!-- Slide 6 (CTA) -->
+<div class="relative group">
+<span class="absolute top-4 left-4 z-10 text-[10px] font-bold text-primary-container uppercase tracking-widest bg-surface-container-lowest/80 backdrop-blur-md px-2 py-1 rounded-lg">Slide 6/6</span>
+<div class="slide-aspect bg-gradient-to-br from-surface-container-high to-surface-container-lowest rounded-xl p-8 flex flex-col justify-center relative overflow-hidden border-2 border-primary/20 transition-all hover:border-primary/50">
+<div class="absolute top-0 right-0 p-4">
+<span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</div>
+<h2 class="text-4xl font-headline font-extrabold leading-tight mb-4 relative z-10">Ready to build your own?</h2>
+<p class="text-on-surface font-medium text-lg leading-relaxed relative z-10 mb-6">Join the 5,000+ creators building in public today.</p>
+<div class="w-full h-1 bg-primary/20 rounded-full relative z-10">
+<div class="w-1/3 h-full bg-primary rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Caption Block -->
+<section class="mb-20">
+<div class="bg-surface-container-low rounded-xl p-6 border border-outline-variant/10">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-headline font-bold text-lg">Post Caption</h3>
+<button class="flex items-center gap-2 text-primary text-xs font-bold uppercase tracking-widest hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+                                Copy Caption
+                            </button>
+</div>
+<div class="bg-surface-container-lowest rounded-lg p-6 font-body text-sm text-on-surface-variant leading-relaxed">
+<p class="mb-4">Transparency is the new marketing. 🚀</p>
+<p class="mb-4">I spent the last 100 hours building my latest project in the open, and the results were unexpected. Sharing the "ugly" parts didn't drive people away—it brought them closer.</p>
+<p class="mb-4">Here are 5 key lessons on why building in public is the most powerful growth lever for creators in 2024.</p>
+<p class="text-primary">#BuildInPublic #SaaS #Growth #IndieHackers #Transparency</p>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Sticky Action Bar -->
+<div class="fixed bottom-0 left-0 lg:left-64 right-0 glass-panel p-6 border-t border-outline-variant/10 z-50">
+<div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">analytics</span>
+</div>
+<div>
+<p class="text-sm font-bold text-on-surface">Carousel Summary</p>
+<p class="text-[10px] text-on-surface-variant uppercase tracking-widest">6 Slides • 4:3 Ratio • High Fidelity</p>
+</div>
+</div>
+<div class="flex items-center gap-4 w-full sm:w-auto">
+<button class="flex-1 sm:flex-none px-6 py-3 rounded-xl border border-outline-variant text-on-surface text-sm font-bold hover:bg-surface-bright transition-all active:scale-95">
+                        Start Over
+                    </button>
+<button class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-8 py-3 rounded-xl bg-gradient-to-r from-primary to-primary-container text-on-primary text-sm font-bold shadow-lg shadow-primary/10 hover:shadow-primary/20 transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm">download</span>
+                        Download ZIP
+                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<footer class="w-full py-8 mt-auto bg-[#131315]">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 border-t border-[#2a2a2c]/10 py-8">
+<p class="font-['Inter'] text-xs uppercase tracking-widest text-[#A1A1AA]">© 2024 BIP Carousel Maker</p>
+<div class="flex gap-8 mt-4 md:mt-0">
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-[#A1A1AA] hover:text-[#F59E0B] underline transition-opacity opacity-80 hover:opacity-100" href="#">Community</a>
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-[#A1A1AA] hover:text-[#F59E0B] underline transition-opacity opacity-80 hover:opacity-100" href="#">Source</a>
+<a class="font-['Inter'] text-xs uppercase tracking-widest text-[#A1A1AA] hover:text-[#F59E0B] underline transition-opacity opacity-80 hover:opacity-100" href="#">Updates</a>
+</div>
+</div>
+</footer>
+</body></html>

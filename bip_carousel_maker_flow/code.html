@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>BIP Carousel Maker - Upload State</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@400;700;800&amp;family=Inter:wght@300;400;500;600;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-fixed": "#ffddb8",
+                        "surface-container": "#201f21",
+                        "secondary-fixed": "#ffddb8",
+                        "inverse-on-surface": "#313032",
+                        "surface": "#131315",
+                        "error": "#ffb4ab",
+                        "surface-container-lowest": "#0e0e10",
+                        "primary-container": "#f59e0b",
+                        "on-secondary-fixed-variant": "#62400f",
+                        "inverse-primary": "#855300",
+                        "tertiary": "#8fd5ff",
+                        "outline": "#a08e7a",
+                        "on-surface": "#e5e1e4",
+                        "on-background": "#e5e1e4",
+                        "surface-bright": "#39393b",
+                        "on-primary-fixed-variant": "#653e00",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-container": "#1abdff",
+                        "secondary": "#f0bd82",
+                        "primary-fixed-dim": "#ffb95f",
+                        "on-primary-container": "#613b00",
+                        "primary": "#ffc174",
+                        "on-tertiary-fixed": "#001e2d",
+                        "on-error": "#690005",
+                        "secondary-container": "#62400f",
+                        "error-container": "#93000a",
+                        "on-tertiary": "#00344a",
+                        "secondary-fixed-dim": "#f0bd82",
+                        "surface-variant": "#353437",
+                        "surface-dim": "#131315",
+                        "on-tertiary-container": "#004966",
+                        "outline-variant": "#534434",
+                        "on-secondary-fixed": "#2a1700",
+                        "on-tertiary-fixed-variant": "#004c6a",
+                        "on-secondary": "#472a00",
+                        "on-primary": "#472a00",
+                        "surface-tint": "#ffb95f",
+                        "on-surface-variant": "#d8c3ad",
+                        "on-primary-fixed": "#2a1700",
+                        "tertiary-fixed-dim": "#7fd0ff",
+                        "surface-container-high": "#2a2a2c",
+                        "surface-container-low": "#1b1b1d",
+                        "inverse-surface": "#e5e1e4",
+                        "background": "#131315",
+                        "surface-container-highest": "#353437",
+                        "on-secondary-container": "#ddac72",
+                        "tertiary-fixed": "#c5e7ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Epilogue"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(53, 52, 55, 0.8);
+            backdrop-filter: blur(20px);
+        }
+        .ghost-border {
+            border: 1px solid rgba(160, 142, 122, 0.15);
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body min-h-screen flex flex-col selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<nav class="w-full top-0 sticky bg-[#0e0e10] z-50">
+<div class="flex justify-between items-center h-16 px-8 max-w-full mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-xl font-bold tracking-tighter text-[#FAFAFA] font-headline">BIP Carousel Maker</span>
+<div class="hidden md:flex gap-6">
+<a class="text-[#F59E0B] font-bold border-b-2 border-[#F59E0B] pb-1 font-label text-sm uppercase tracking-wider" href="#">How it works</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-5 py-2 rounded-xl bg-gradient-to-r from-primary to-primary-container text-on-primary font-semibold text-sm active:scale-95 transition-all shadow-lg shadow-primary-container/10">
+                    Get Started
+                </button>
+</div>
+</div>
+</nav>
+<div class="flex flex-1">
+<!-- SideNavBar -->
+<aside class="hidden md:flex h-[calc(100vh-64px)] w-64 sticky top-16 bg-[#0e0e10] flex-col p-4 gap-2">
+<div class="mb-6 px-2">
+<h2 class="text-lg font-black text-[#FAFAFA] font-headline">Workflow</h2>
+<p class="text-xs text-on-surface-variant font-label">Carousel Engine</p>
+</div>
+<nav class="space-y-1">
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#F59E0B] font-semibold bg-[#2a2a2c] rounded-lg transition-transform scale-98" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="cloud_upload">cloud_upload</span>
+<span class="font-label">Upload</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#A1A1AA] hover:text-[#FAFAFA] hover:bg-[#2a2a2c] rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label">Generating</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 text-[#A1A1AA] hover:text-[#FAFAFA] hover:bg-[#2a2a2c] rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined text-xl" data-icon="visibility">visibility</span>
+<span class="font-label">Preview</span>
+</a>
+</nav>
+<div class="mt-auto p-4 rounded-xl bg-surface-container-low ghost-border">
+<div class="w-full aspect-video rounded-lg overflow-hidden mb-3 relative group">
+<div class="absolute inset-0 bg-primary/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-primary" data-icon="play_circle">play_circle</span>
+</div>
+<img class="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all" data-alt="abstract digital 3D render of flowing silk textures in deep amber and obsidian black colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoKVX4HemJHF3gdoTQXJ1K13mVQo1tG1n46iC9HsOd0gALZDRFsFg_xQ_RuGBV7taHbB9tPJcjzUl2rs1CuzhDkW-g3SqJuD0FAjx8TjSWZrp-ZELDXvsfI-9vm0LA9LI0qXx3GQleXhxQJ5gv2JtM74nAvC2-v_uYapYXJF0i6fib3Y-KQL7Osl_nMBRTEqCrClmRnXk2GRkUdt6mXYkFLmjmfGkB4LGIYmz1zglIMs3Cif5fwvaUfJD-VrH51ihCdRKx2qDdBQ"/>
+</div>
+<p class="text-[10px] uppercase tracking-widest text-outline-variant font-bold">Pro Tip</p>
+<p class="text-xs text-on-surface-variant leading-relaxed">Tell a story, not just a fact. The engine works best with narrative build logs.</p>
+</div>
+</aside>
+<!-- Main Workspace -->
+<main class="flex-1 bg-surface-dim overflow-y-auto relative">
+<div class="max-w-4xl mx-auto px-8 py-12 md:py-20">
+<!-- Editorial Header -->
+<header class="mb-12">
+<span class="text-primary font-label text-xs font-bold uppercase tracking-[0.2em] mb-4 block">New Campaign</span>
+<h1 class="text-5xl md:text-7xl font-headline font-extrabold text-[#FAFAFA] tracking-tighter leading-[0.9]">
+                        Share the <span class="text-primary-container">Process.</span>
+</h1>
+</header>
+<!-- Input Section -->
+<div class="space-y-8">
+<!-- Photo Upload Zone -->
+<div class="group relative flex flex-col items-center justify-center w-full aspect-[21/9] rounded-xl bg-surface-container-lowest ghost-border hover:border-primary/30 transition-all cursor-pointer overflow-hidden">
+<div class="z-10 flex flex-col items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl" data-icon="add_a_photo">add_a_photo</span>
+</div>
+<span class="text-sm font-label text-on-surface-variant font-medium">Add cover photo</span>
+</div>
+<div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent"></div>
+</div>
+<!-- Story Textarea -->
+<div class="relative group">
+<label class="absolute -top-3 left-4 px-2 bg-surface-dim text-[10px] font-bold uppercase tracking-widest text-outline-variant z-10">The Build Story</label>
+<textarea class="w-full min-h-[320px] bg-surface-container-lowest ghost-border rounded-xl p-8 text-xl md:text-2xl font-body leading-relaxed text-on-surface placeholder:text-surface-container-highest focus:ring-2 focus:ring-primary-container/20 focus:border-primary-container outline-none transition-all resize-none" placeholder="What happened in your build today?"></textarea>
+<!-- Floating Formatting Hint -->
+<div class="absolute bottom-4 right-4 flex gap-2 opacity-40 hover:opacity-100 transition-opacity">
+<button class="p-2 rounded-lg bg-surface-container hover:bg-surface-bright text-on-surface">
+<span class="material-symbols-outlined text-sm" data-icon="format_bold">format_bold</span>
+</button>
+<button class="p-2 rounded-lg bg-surface-container hover:bg-surface-bright text-on-surface">
+<span class="material-symbols-outlined text-sm" data-icon="format_italic">format_italic</span>
+</button>
+<button class="p-2 rounded-lg bg-surface-container hover:bg-surface-bright text-on-surface">
+<span class="material-symbols-outlined text-sm" data-icon="format_list_bulleted">format_list_bulleted</span>
+</button>
+</div>
+</div>
+<!-- Action Bar -->
+<div class="flex flex-col md:flex-row items-center justify-between gap-6 pt-4">
+<div class="flex items-center gap-6">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold uppercase tracking-widest text-outline-variant">AI Strength</span>
+<div class="flex gap-1 mt-1">
+<div class="w-8 h-1 rounded-full bg-primary-container"></div>
+<div class="w-8 h-1 rounded-full bg-primary-container"></div>
+<div class="w-8 h-1 rounded-full bg-surface-container-highest"></div>
+</div>
+</div>
+<div class="h-8 w-px bg-outline-variant/20"></div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-lg" data-icon="settings_sparkle">settings</span>
+<span class="text-xs font-label text-on-surface-variant">Editorial mode active</span>
+</div>
+</div>
+<!-- Main Button -->
+<button class="w-full md:w-auto px-10 py-4 rounded-xl bg-[#2a2a2c] text-[#A1A1AA] cursor-not-allowed font-bold text-lg flex items-center justify-center gap-3 transition-all group overflow-hidden relative">
+<span class="z-10">Generate Carousel</span>
+<span class="material-symbols-outlined z-10 transition-transform group-hover:translate-x-1" data-icon="arrow_forward">arrow_forward</span>
+<!-- Hidden Gradient Overlay for active state -->
+<div class="absolute inset-0 bg-gradient-to-r from-primary to-primary-container opacity-0 transition-opacity"></div>
+</button>
+</div>
+</div>
+<!-- Footer Decoration -->
+<div class="mt-24 grid grid-cols-1 md:grid-cols-3 gap-8 border-t border-outline-variant/10 pt-12">
+<div class="space-y-2">
+<h4 class="text-on-surface font-bold text-sm">Semantic Logic</h4>
+<p class="text-xs text-on-surface-variant">AI analyzes your text to extract key milestones and "Aha!" moments automatically.</p>
+</div>
+<div class="space-y-2">
+<h4 class="text-on-surface font-bold text-sm">Visual Cohesion</h4>
+<p class="text-xs text-on-surface-variant">Each slide is crafted with asymmetric balance to avoid that "generic template" look.</p>
+</div>
+<div class="space-y-2">
+<h4 class="text-on-surface font-bold text-sm">Build in Public</h4>
+<p class="text-xs text-on-surface-variant">Optimized for LinkedIn, Twitter, and Instagram growth loops.</p>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full py-8 bg-[#131315] flex flex-col md:flex-row justify-between items-center px-8 border-t border-[#2a2a2c]/10">
+<span class="text-[#A1A1AA] font-label text-xs uppercase tracking-widest">© 2024 BIP Carousel Maker</span>
+<div class="flex gap-8 mt-4 md:mt-0">
+<a class="text-[#A1A1AA] hover:text-[#F59E0B] underline font-label text-xs uppercase tracking-widest transition-opacity opacity-80 hover:opacity-100" href="#">Community</a>
+<a class="text-[#A1A1AA] hover:text-[#F59E0B] underline font-label text-xs uppercase tracking-widest transition-opacity opacity-80 hover:opacity-100" href="#">Source</a>
+<a class="text-[#A1A1AA] hover:text-[#F59E0B] underline font-label text-xs uppercase tracking-widest transition-opacity opacity-80 hover:opacity-100" href="#">Updates</a>
+</div>
+</footer>
+</body></html>

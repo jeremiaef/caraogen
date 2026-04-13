@@ -1,26 +1,121 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-primary-fixed:          #ffddb8;
+  --color-surface-container:     #201f21;
+  --color-secondary-fixed:        #ffddb8;
+  --color-inverse-on-surface:    #313032;
+  --color-surface:               #131315;
+  --color-error:                 #ffb4ab;
+  --color-surface-container-lowest: #0e0e10;
+  --color-primary-container:     #f59e0b;
+  --color-on-secondary-fixed-variant: #62400f;
+  --color-inverse-primary:       #855300;
+  --color-tertiary:              #8fd5ff;
+  --color-outline:               #a08e7a;
+  --color-on-surface:            #e5e1e4;
+  --color-on-background:         #e5e1e4;
+  --color-surface-bright:        #39393b;
+  --color-on-primary-fixed-variant: #653e00;
+  --color-on-error-container:    #ffdad6;
+  --color-tertiary-container:    #1abdff;
+  --color-secondary:             #f0bd82;
+  --color-primary-fixed-dim:     #ffb95f;
+  --color-on-primary-container:  #613b00;
+  --color-primary:               #ffc174;
+  --color-on-tertiary-fixed:     #001e2d;
+  --color-on-error:              #690005;
+  --color-secondary-container:   #62400f;
+  --color-error-container:       #93000a;
+  --color-on-tertiary:           #00344a;
+  --color-secondary-fixed-dim:   #f0bd82;
+  --color-surface-variant:        #353437;
+  --color-surface-dim:           #131315;
+  --color-on-tertiary-container:  #004966;
+  --color-outline-variant:       #534434;
+  --color-on-secondary-fixed:    #2a1700;
+  --color-on-tertiary-fixed-variant: #004c6a;
+  --color-on-secondary:          #472a00;
+  --color-on-primary:            #472a00;
+  --color-surface-tint:          #ffb95f;
+  --color-on-surface-variant:    #d8c3ad;
+  --color-on-primary-fixed:       #2a1700;
+  --color-tertiary-fixed-dim:    #7fd0ff;
+  --color-surface-container-high: #2a2a2c;
+  --color-surface-container-low:  #1b1b1d;
+  --color-inverse-surface:        #e5e1e4;
+  --color-background:             #131315;
+  --color-surface-container-highest: #353437;
+  --color-on-secondary-container: #ddac72;
+  --color-tertiary-fixed:        #c5e7ff;
+
+  --font-headline:  "Epilogue", sans-serif;
+  --font-body:      "Inter", sans-serif;
+  --font-label:     "Inter", sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ─── Global base ────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #131315;
+  color: #e5e1e4;
+  font-family: "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─── Material Symbols ──────────────────────────────────────────────────────── */
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  font-size: 1rem;
+  line-height: 1;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* ─── Glass panel (sticky action bar) ──────────────────────────────────────── */
+.glass-panel {
+  background: rgba(53, 52, 55, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* ─── Ghost border ─────────────────────────────────────────────────────────── */
+.ghost-border {
+  border: 1px solid rgba(160, 142, 122, 0.15);
+}
+
+/* ─── Skeleton pulse ───────────────────────────────────────────────────────── */
+@keyframes skeleton-pulse {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.skeleton-pulse {
+  background: linear-gradient(90deg, #2a2a2c 25%, #353437 50%, #2a2a2c 75%);
+  background-size: 200% 100%;
+  animation: skeleton-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #0e0e10; }
+::-webkit-scrollbar-thumb { background: #2a2a2c; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #353437; }
+
+/* ─── Text selection ───────────────────────────────────────────────────────── */
+::selection {
+  background: #f59e0b;
+  color: #472a00;
+}
+
+/* ─── Focus visible ─────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid #f59e0b;
+  outline-offset: 2px;
 }
