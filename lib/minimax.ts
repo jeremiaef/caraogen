@@ -3,8 +3,8 @@ import { GenerateRequest, GenerateResponse, RemixSlideRequest, Slide } from "./t
 const GROQ_BASE_URL = "https://api.groq.com/openai/v1";
 
 function getApiKey(): string {
-  const key = process.env.MINIMAX_API_KEY;
-  if (!key) throw new Error("MINIMAX_API_KEY environment variable is not set");
+  const key = process.env.GROQ_API_KEY;
+  if (!key) throw new Error("GROQ_API_KEY environment variable is not set");
   return key;
 }
 
