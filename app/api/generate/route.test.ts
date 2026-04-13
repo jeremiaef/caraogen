@@ -1,4 +1,5 @@
 import { describe, it, expect } from "vitest";
+import type { NextRequest } from "next/server";
 
 describe("POST /api/generate", () => {
   it("returns 400 when story is missing", async () => {
@@ -8,7 +9,7 @@ describe("POST /api/generate", () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({}),
     });
-    const res = await POST(req);
+    const res = await POST(req as NextRequest);
     expect(res.status).toBe(400);
     const json = await res.json();
     expect(json.error).toContain("story");
@@ -21,7 +22,7 @@ describe("POST /api/generate", () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ story: "Hello world", tone: "not-a-tone" }),
     });
-    const res = await POST(req);
+    const res = await POST(req as NextRequest);
     expect(res.status).toBe(400);
     const json = await res.json();
     expect(json.error).toContain("tone");
@@ -34,7 +35,7 @@ describe("POST /api/generate", () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ story: "Hello", aspectRatio: "16:9" }),
     });
-    const res = await POST(req);
+    const res = await POST(req as NextRequest);
     expect(res.status).toBe(400);
     const json = await res.json();
     expect(json.error).toContain("aspectRatio");

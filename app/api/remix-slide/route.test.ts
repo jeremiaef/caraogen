@@ -1,4 +1,5 @@
 import { describe, it, expect } from "vitest";
+import type { NextRequest } from "next/server";
 
 describe("POST /api/remix-slide", () => {
   it("returns 400 when slideIndex is out of range", async () => {
@@ -12,7 +13,7 @@ describe("POST /api/remix-slide", () => {
         slideType: "hook",
       }),
     });
-    const res = await POST(req);
+    const res = await POST(req as NextRequest);
     expect(res.status).toBe(400);
     const json = await res.json();
     expect(json.error).toContain("slideIndex");
@@ -29,7 +30,7 @@ describe("POST /api/remix-slide", () => {
         slideType: "not-a-type",
       }),
     });
-    const res = await POST(req);
+    const res = await POST(req as NextRequest);
     expect(res.status).toBe(400);
     const json = await res.json();
     expect(json.error).toContain("slideType");
@@ -42,7 +43,7 @@ describe("POST /api/remix-slide", () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ slideIndex: 1, slideType: "hook" }),
     });
-    const res = await POST(req);
+    const res = await POST(req as NextRequest);
     expect(res.status).toBe(400);
     const json = await res.json();
     expect(json.error).toContain("story");
